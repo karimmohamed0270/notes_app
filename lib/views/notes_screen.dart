@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/widgets/notes_item.dart';
 
 class NotesScreen extends StatelessWidget {
   static const String id = 'notes_screen';
@@ -25,6 +26,7 @@ class NotesScreen extends StatelessWidget {
           ),
         ],
       ),
+      body: NotesItem(),
     );
   }
 }
