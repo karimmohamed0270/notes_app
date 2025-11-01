@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notes_app/widgets/notes_item.dart';
+import 'package:notes_app/widgets/notes_item_container.dart';
+import 'package:notes_app/widgets/notesmodelsheet.dart';
 
 class NotesScreen extends StatelessWidget {
   static const String id = 'notes_screen';
@@ -7,7 +8,7 @@ class NotesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    var scaffold = Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Padding(
@@ -27,7 +28,19 @@ class NotesScreen extends StatelessWidget {
         ],
       ),
       body: NotesListView(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            builder: (context) =>
+                //  the poput page what will show to add the note
+                NoteMoelSheet(),
+          );
+        },
+        child: const Icon(Icons.add),
+      ),
     );
+    return scaffold;
   }
 }
 
