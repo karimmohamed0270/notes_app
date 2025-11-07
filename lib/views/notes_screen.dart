@@ -28,12 +28,13 @@ class NotesScreen extends StatelessWidget {
         ],
       ),
       body: NotesListView(),
+      //  floating action button to add a new note (+)
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
             context: context,
             builder: (context) =>
-                //  the poput page what will show to add the note
+                //  the poput page what will show to add the note (notesModelSheet is an custom widget)
                 NoteMoelSheet(),
           );
         },
@@ -51,7 +52,10 @@ class NotesListView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemBuilder: (context, index) {
-        return NotesItem();
+        return GestureDetector(
+          onTap: () => Navigator.pushNamed(context, 'edit_note_view'),
+          child: NotesItem(),
+        );
       },
     );
   }
