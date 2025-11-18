@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:notes_app/widgets/notes_item_container.dart';
-import 'package:notes_app/widgets/notesmodelsheet.dart';
+import 'package:notes_app/widgets/add_notesmodelsheet.dart';
 
 class NotesScreen extends StatelessWidget {
   static const String id = 'notes_screen';

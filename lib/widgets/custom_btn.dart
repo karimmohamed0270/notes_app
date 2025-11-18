@@ -3,7 +3,7 @@ import 'package:notes_app/widgets/constants.dart';
 
 class CustomBtn extends StatelessWidget {
   CustomBtn({super.key, this.onTap, required this.text});
-  final VoidCallback? onTap;
+  final void Function()? onTap;
   final String text;
 
   @override
