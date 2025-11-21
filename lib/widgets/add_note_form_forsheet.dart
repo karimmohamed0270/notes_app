@@ -1,15 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:notes_app/widgets/custom_btn.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
-
-class NoteMoelSheet extends StatelessWidget {
-  const NoteMoelSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AddNoteForm();
-  }
-}
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
