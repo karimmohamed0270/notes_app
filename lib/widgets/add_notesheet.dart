@@ -11,6 +11,8 @@ class NoteMoelSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //  step 5 use the cubit consumer to listen to the states of the cubit (integrate cubit)
+    //blocconsumer == blockbuilder + blocklistener
     return BlocConsumer<AddNoteCubitCubit, AddNoteCubitState>(
       listener: (context, state) {
         if (state is AddNoteCubitSuccess) {

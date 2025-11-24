@@ -10,7 +10,7 @@ void main() async {
   //  intit hive
   await Hive.initFlutter();
   //  open a box called notes_app to (store) data related to our app
-  await Hive.openBox('notes_app');
+  await Hive.openBox<NoteModel>('notes_app');
   //  register adpateor to treat with NoteModel type and (connect) it with hive database
   Hive.registerAdapter(NoteModelAdapter());
   runApp(const MyApp());

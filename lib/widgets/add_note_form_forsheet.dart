@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/add_note_cubit/cubit/add_note_cubit_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_btn.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
 
@@ -15,6 +19,7 @@ AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
 
 String? title;
 String? content;
+int color = Colors.amber.value;
 
 class _AddNoteFormState extends State<AddNoteForm> {
   @override
@@ -60,6 +65,18 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 if (formKey.currentState != null &&
                     formKey.currentState!.validate()) {
                   formKey.currentState!.save();
+                  //  step 6 triger cubit
+
+                  //  first save data to model to use it in triger cubit in add note fun
+                  var notemodel = NoteModel(
+                    title: title!,
+                    content: content!,
+                    date: DateTime.now().toString(),
+                    color: color,
+                  );
+                  BlocProvider.of<AddNoteCubitCubit>(
+                    context,
+                  ).addnote(notemodel);
                 } else {
                   autovalidateMode = AutovalidateMode.always;
                   setState(() {});
