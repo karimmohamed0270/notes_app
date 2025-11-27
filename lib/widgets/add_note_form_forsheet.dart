@@ -57,30 +57,38 @@ class _AddNoteFormState extends State<AddNoteForm> {
               },
             ),
             SizedBox(height: 16),
-            CustomBtn(
-              text: 'Add',
-              onTap: () {
-                // Action to save the note
-                //  validate the form
-                if (formKey.currentState != null &&
-                    formKey.currentState!.validate()) {
-                  formKey.currentState!.save();
-                  //  step 6 triger cubit
+            //  i use blocbuilder to rebuild only the button when the state changes not the whole form
+            //  to know the states of the cubit
+            BlocBuilder<AddNoteCubitCubit, AddNoteCubitState>(
+              builder: (context, state) {
+                return CustomBtn(
+                  //  if state is loading show loading indicator will apper in the btn else show add text
+                  isLoading: state is AddNoteCubitLoading ? true : false,
+                  text: 'Add',
+                  onTap: () {
+                    // Action to save the note
+                    //  validate the form
+                    if (formKey.currentState != null &&
+                        formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
+                      //  step 6 triger cubit
 
-                  //  first save data to model to use it in triger cubit in add note fun
-                  var notemodel = NoteModel(
-                    title: title!,
-                    content: content!,
-                    date: DateTime.now().toString(),
-                    color: color,
-                  );
-                  BlocProvider.of<AddNoteCubitCubit>(
-                    context,
-                  ).addnote(notemodel);
-                } else {
-                  autovalidateMode = AutovalidateMode.always;
-                  setState(() {});
-                }
+                      //  first save data to model to use it in triger cubit in add note fun
+                      var notemodel = NoteModel(
+                        title: title!,
+                        content: content!,
+                        date: DateTime.now().toString(),
+                        color: color,
+                      );
+                      BlocProvider.of<AddNoteCubitCubit>(
+                        context,
+                      ).addnote(notemodel);
+                    } else {
+                      autovalidateMode = AutovalidateMode.always;
+                      setState(() {});
+                    }
+                  },
+                );
               },
             ),
             SizedBox(height: 16),

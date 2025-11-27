@@ -5,14 +5,17 @@ import 'package:notes_app/add_note_cubit/cubit/add_note_cubit_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/views/edit_note_view.dart';
 import 'package:notes_app/views/notes_screen.dart';
+import 'package:notes_app/views/simple_bserver_cubit.dart';
 
 void main() async {
+  Bloc.observer = MyBlocObserver();
   //  intit hive
   await Hive.initFlutter();
-  //  open a box called notes_app to (store) data related to our app
-  await Hive.openBox<NoteModel>('notes_app');
   //  register adpateor to treat with NoteModel type and (connect) it with hive database
   Hive.registerAdapter(NoteModelAdapter());
+  //  open a box called notes_app to (store) data related to our app
+  await Hive.openBox<NoteModel>('notes_app');
+
   runApp(const MyApp());
 }
 

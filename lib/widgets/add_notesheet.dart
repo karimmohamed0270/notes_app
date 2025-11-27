@@ -25,10 +25,7 @@ class NoteMoelSheet extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: state is AddNoteCubitLoading ? true : false,
-          child: AddNoteForm(),
-        );
+        return AddNoteForm();
       },
     );
   }
