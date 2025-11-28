@@ -25,7 +25,18 @@ class NoteMoelSheet extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        return AddNoteForm();
+        return AbsorbPointer(
+          //  to prevent user from interacting with the form when loading
+          //  if the state is loading the absorbing will be true else false
+          absorbing: state is AddNoteCubitLoading ? true : false,
+          child: Padding(
+            padding: EdgeInsets.only(
+              // to make the bottom sheet go up when the keyboard appears
+              bottom: MediaQuery.of(context).viewInsets.bottom,
+            ),
+            child: AddNoteForm(),
+          ),
+        );
       },
     );
   }
