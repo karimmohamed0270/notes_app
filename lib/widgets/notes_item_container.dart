@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:notes_app/add_note_cubit/cubit/create_notes_cubit/cubit/createaddcubit_cubit.dart';
+import 'package:notes_app/models/note_model.dart';
 
 class NotesItem extends StatelessWidget {
-  const NotesItem({super.key});
+  const NotesItem({super.key, required this.note});
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +26,7 @@ class NotesItem extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 title: Text(
-                  "Note 1",
+                  note.title,
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.bold,
@@ -30,7 +34,7 @@ class NotesItem extends StatelessWidget {
                   ),
                 ),
                 subtitle: Text(
-                  "This is the first note.",
+                  note.content,
                   style: TextStyle(
                     color: Colors.black.withOpacity(0.7),
                     fontSize: 18,
@@ -40,16 +44,17 @@ class NotesItem extends StatelessWidget {
                   icon: Icon(Icons.delete, color: Colors.black, size: 36),
                   onPressed: () {
                     // Action to delete the note
+                    // hive delete method
+                    note.delete();
+                    // refresh the UI
+                    BlocProvider.of<CreateaddcubitCubit>(context).fetchnote();
                   },
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text(
-                DateTime.now().toString(),
-                style: TextStyle(color: Colors.black),
-              ),
+              child: Text(note.date, style: TextStyle(color: Colors.black)),
             ),
           ],
         ),

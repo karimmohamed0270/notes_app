@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notes_app/add_note_cubit/cubit/add_note_cubit_cubit.dart';
+import 'package:notes_app/add_note_cubit/cubit/create_notes_cubit/cubit/createaddcubit_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 import 'package:notes_app/widgets/custom_btn.dart';
 import 'package:notes_app/widgets/custom_text_field.dart';
@@ -44,7 +45,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             SizedBox(height: 16),
             CustomTextField(
               hintText: 'Note ',
-              onSaved: (value) {
+              onChanged: (value) {
                 title = value;
               },
             ),
@@ -52,7 +53,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
             CustomTextField(
               hintText: 'Description',
               maxLines: 5,
-              onSaved: (value) {
+              onChanged: (value) {
                 content = value;
               },
             ),
@@ -83,6 +84,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       BlocProvider.of<AddNoteCubitCubit>(
                         context,
                       ).addnote(notemodel);
+                      //  to apper the new note in the notes list after adding it
+                      //  step 6 triger cubit to fetch notes again   in the create note cubit
+                      BlocProvider.of<CreateaddcubitCubit>(context).fetchnote();
                     } else {
                       autovalidateMode = AutovalidateMode.always;
                       setState(() {});
