@@ -4,8 +4,6 @@ Notes Application using Flutter
 
 Developed a notes application using Flutter and Hive for local data storage, enabling fast and efficient note management without the need for an internet connection.
 
-GitHub: https://github.com/karimmohamed0270/notes_app
-
 Key Features:
 - Create, edit, and delete notes
 - Local data storage using Hive
