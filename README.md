@@ -1,16 +1,17 @@
 # notes_app
 
-A new Flutter project.
+Notes Application using Flutter
 
-## Getting Started
+Developed a notes application using Flutter and Hive for local data storage, enabling fast and efficient note management without the need for an internet connection.
 
-This project is a starting point for a Flutter application.
+GitHub: https://github.com/karimmohamed0270/notes_app
 
-A few resources to get you started if this is your first Flutter project:
+Key Features:
+- Create, edit, and delete notes
+- Local data storage using Hive
+- Fast performance and lightweight database
+- Clean and user-friendly UI
+- Persistent data without internet connection
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## screenshoots
+https://drive.google.com/drive/folders/1zBeUS-CsRm6VgDqx_SC2ZiasJKNCaHmA?usp=sharing
